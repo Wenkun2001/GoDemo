@@ -1,0 +1,45 @@
+// 说明使用的是proto3语法
+syntax = "proto3";
+
+// 这部分的内容是关于最后生成的go文件是处在哪个目录哪个包中
+// 。代表在当前目录生成，service代表了生成的go文件的包名是service
+option  go_package = ".;service";
+
+// 我们需要定义一个服务，在这个服务中要有一个方法
+// 这个方法可以接收客户端的参数，再返回服务端的响应
+// service关键字相当于方法
+
+// 服务定义
+// 如果想要将消息类型用在RPC系统中，可以在.proto文件中定义一个RPC服务接口
+// protocol buffer编译器将会根据所选择的不同语言生成服务接口代码及存根
+service  SayHello {
+  // rpc 服务函数名 (参数) 返回 (返回函数)
+  rpc SayHello(HelloRequest) returns (HelloResponse){}
+}
+
+// message关键字相当于结构体
+
+// 比较特别的是变量后面的“赋值”，注意，这里并不是赋值，
+// 而是在定义这个变量在message中的位置
+
+// 消息就是需要传输的数据格式的定义
+// 在消息中承载的数据分别对应于每一个字段，其中每个字段都有一个名字和一种类型
+// 一个proto文件中可以定义多个消息类型
+
+// 字段规则
+// optional：可选字段。repeated：可重复字段
+
+// 消息号
+// 在消息体的定义中，每个字段都必须要有一个唯一的标识号
+// 标识号是[1, 2^29-1]范围内的一个整数
+
+// 嵌套消息
+// 可以在其他消息类型中定义，使用消息类型
+// 如果要在父消息类型的外部重用这个消息类型，就.点出来
+message HelloRequest {
+  string requestName = 1;
+}
+
+message HelloResponse {
+  string responseMsg = 1;
+}

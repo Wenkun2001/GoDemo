@@ -27,7 +27,7 @@ func readContent(config *viper.Viper) {
 func readJson() {
 	config := viper.New()
 	// 文件所在目录
-	config.AddConfigPath("file/conf/")
+	config.AddConfigPath("viper/conf/")
 	// 文件名
 	config.SetConfigName("account")
 	// 文件类型
@@ -39,7 +39,7 @@ func readJson() {
 func readYaml() {
 	config := viper.New()
 	// 文件所在目录
-	config.AddConfigPath("file/conf/")
+	config.AddConfigPath("viper/conf/")
 	// 文件名
 	config.SetConfigName("account")
 	// 文件类型

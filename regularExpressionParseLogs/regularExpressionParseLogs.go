@@ -26,9 +26,11 @@ func main() {
 	fmt.Println(indexs2)
 	subMatch := indexs1[0]
 	begin, end := subMatch[0], subMatch[1]
-	fmt.Println(log[begin:end]) //整体匹配上reg的部分
+	//整体匹配上reg的部分
+	fmt.Println(log[begin:end])
 	begin, end = subMatch[2], subMatch[3]
-	fmt.Println(log[begin:end]) //匹配上reg中()的部分
+	//匹配上reg中()的部分
+	fmt.Println(log[begin:end])
 }
 
 //regexp.MustCompile发生异常时会自动触发panic，这里使用regexp.Compile，发生异常时自行调用了panic。
